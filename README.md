@@ -1,36 +1,5 @@
-## Bigchaindb ansible deployment recipes
+The command to run the setup: 
 
-This repository contains a collection of ansible playbooks for quick bigchaindb node deployment and orchestration.
-
-### What can be done
-
-- Installation of BigchainDB
-    - Adding and configuring users
-    - Mongodb installation
-    - Specified python version installation
-    - Tendermint installation
-    - BigchainDB installation and configuration
-    - Enabling and activating services
-    - Nginx configuration
-- Connecting nodes into a network
-
-### Limitations
-
-- Requires ssh connection to a sudoer/root
-- Currently works/tested on Ubuntu 18.04 only
-        
-
-### How to use
-
-1. Inspect ./vars/install-config.yml and edit settings if required.
-   Pay close attention to nginx section if you need it. Nginx config disabled by default.
-2. Add list of hosts and optional per host variables to ./hosts/all file.
-2. cd into playbook directory.
-3. run with `ansible-playbook install.yml -i hosts/all --extra-vars "top_dir=$(pwd)"` in bash shell.
-4. Wait for all plays to complete
-
-Bigchaindb should be now available on port 9984 or port 80 if nginx is up.
-
-### Other notes
-
-This is basically a collection of shell snippets, ansible people are more then welcome to pick at it.
+```
+ansible-playbook --become --user root -i inventory/hosts -l testnet_2_servers  install.yml  --extra-vars "top_dir=$(pwd)"
+```
