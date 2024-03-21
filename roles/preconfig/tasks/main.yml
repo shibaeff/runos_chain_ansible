@@ -16,30 +16,12 @@
   become: yes
 # TODO disable login
 
-- name: Update apt
-  apt:
-    update_cache: yes
-  become: yes
-
-- name: Install build requirements
-  apt:
-    name: "{{ packages }}"
-  vars:
-    packages:
-      - make
-      - build-essential
-      - libssl-dev
-      - libffi-dev
-      - jq
-      - ntp
-      - ntpstat
-  become: yes
-
-- name: Use the trusted NTP
-  when: use_trusted_ntp
-  script: "{{ scripts }}/ntpset"
-  become: yes
-  # TODO check result
-  
-- name: restart ntp
-  service: name=ntp state=restarted
+# - name: Install build requirements
+#   apt:
+#     name: "{{ packages }}"
+#   vars:
+#     packages:
+#       # - make
+#       # - build-essential
+#       # - jq
+#   become: yes

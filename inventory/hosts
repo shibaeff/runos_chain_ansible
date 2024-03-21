@@ -1,0 +1,21 @@
+[testnet_1_servers]
+# perf-s01 ansible_host=172.168.3.93 ansible_ssh_user=admsys ansible_ssh_pass=ORK7oBtr index=100
+dlt01 ansible_host=172.20.0.21 ansible_ssh_user=admsys ansible_ssh_private_key_file=~/.ssh/asvk index=0
+dlt02 ansible_host=172.20.0.22 ansible_ssh_user=admsys ansible_ssh_private_key_file=~/.ssh/asvk index=1
+dlt03 ansible_host=172.20.0.23 ansible_ssh_user=admsys ansible_ssh_private_key_file=~/.ssh/asvk index=2
+dlt04 ansible_host=172.20.0.24 ansible_ssh_user=admsys ansible_ssh_private_key_file=~/.ssh/asvk index=3
+
+[testnet_2_servers]
+# perf-s01 ansible_host=172.168.3.93 ansible_ssh_user=admsys ansible_ssh_pass=ORK7oBtr index=100
+dlt05 ansible_host=172.20.6.49 ansible_ssh_user=admsys ansible_ssh_private_key_file=~/.ssh/asvk index=0
+dlt06 ansible_host=172.20.6.50 ansible_ssh_user=admsys ansible_ssh_private_key_file=~/.ssh/asvk index=1
+# dlt07 ansible_host=172.20.6.51 ansible_ssh_user=admsys ansible_ssh_private_key_file=~/.ssh/asvk index=2
+# dlt08 ansible_host=172.20.6.52 ansible_ssh_user=admsys ansible_ssh_private_key_file=~/.ssh/asvk index=3
+# dlt09 ansible_host=172.20.6.53 ansible_ssh_user=admsys ansible_ssh_private_key_file=~/.ssh/asvk index=4
+# dlt10 ansible_host=172.20.6.54 ansible_ssh_user=admsys ansible_ssh_private_key_file=~/.ssh/asvk index=5
+# dlt11 ansible_host=172.20.6.55 ansible_ssh_user=admsys ansible_ssh_private_key_file=~/.ssh/asvk index=6
+# dlt12 ansible_host=172.20.6.56 ansible_ssh_user=admsys ansible_ssh_private_key_file=~/.ssh/asvk index=7
+# dlt13 ansible_host=172.20.6.57 ansible_ssh_user=admsys ansible_ssh_private_key_file=~/.ssh/asvk index=8
+# dlt14 ansible_host=172.20.6.58 ansible_ssh_user=admsys ansible_ssh_private_key_file=~/.ssh/asvk index=9
+# dlt15 ansible_host=172.20.6.59 ansible_ssh_user=admsys ansible_ssh_private_key_file=~/.ssh/asvk index=10
+# dlt16 ansible_host=172.20.6.48 ansible_ssh_user=admsys ansible_ssh_private_key_file=~/.ssh/asvk index=11

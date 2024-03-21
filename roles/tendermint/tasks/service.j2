@@ -3,13 +3,13 @@ Description=Tendermint. Byzantine-fault tolerant state machine replication.
 Documentation=https://tendermint.readthedocs.io/en/master/
 
 [Service]
-ExecStart=/home/{{ tendermint_user }}/go/bin/tendermint node \
+ExecStart=tendermint node \
                    --p2p.laddr "tcp://0.0.0.0:26656" \
                    --proxy_app="tcp://0.0.0.0:26658" \
                    --consensus.create_empty_blocks=false \
-                   --p2p.pex=false
+                   --p2p.pex=false --proxy_app=kvstore
 WorkingDirectory=/home/{{ tendermint_user }}
-User={{ tendermint_user }}
+User=root
 Group={{ bigchaindb_group }}
 
 [Install]

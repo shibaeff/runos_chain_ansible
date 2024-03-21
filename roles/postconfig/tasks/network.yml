@@ -56,14 +56,3 @@
   set_fact:
     genesis_time: "{{ hostvars[play_hosts[0]].genesis_time.stdout | string }}"
     chain_id: "{{ hostvars[play_hosts[0]].chain_id | string }}"
-
-- name: script
-  script: |
-    {{ scripts }}/tendermint_init {{tendermint_user}} \
-    {{ genesis_time }} \
-    {{ chain_id }} \
-    {{ validators|join(',')|b64encode }} \
-    {{ voting_powers|join(',') }} \
-    {{ node_ids|join(',') }} \
-    {{ play_hosts|join(',') }} \
-  become: yes

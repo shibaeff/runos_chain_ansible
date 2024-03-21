@@ -1,3 +1,11 @@
+- name: Copy tendermint binary to remote server
+  copy:
+    src: /usr/local/bin/tendermint
+    dest: /usr/local/bin/tendermint
+    owner: root # Optionally set the owner of the file
+    group: root # Optionally set the group of the file
+    mode: '0755' # Optionally set the mode. Use string to ensure leading zeros are not lost.
+
 - name: Configure tendermint user
   shell: |
     sudo -i -u {{ tendermint_user }} bash << EOF
@@ -13,30 +21,17 @@
     source ~/.profile
     EOF
 
-- name: Update apt
-  apt:
-    upgrade: yes
-    update_cache: yes
-  become: yes
-
-- name: Install go
-  apt:
-    name: "{{ go_deb_package_name }}"
-  become: yes
+# - name: Initialize tendermint
+#   shell: |
+#     sudo -i -u {{ tendermint_user }}  bash << EOF
+#     tendermint init
+#     EOF
+#   become: yes
 
 - name: Initialize tendermint
-  shell: |
-    sudo -i -u{{ tendermint_user }}  bash << EOF
-    go get -u {{ tendermint_repo }}
-    cd \$GOPATH/src/{{ tendermint_repo }}
-    git checkout '{{ tendermint_branch }}'
-    git fetch origin '{{ tendermint_branch }}'
-    make get_tools
-    make get_vendor_deps
-    make install
-    tendermint init
-    EOF
-  become: yes
+  shell: tendermint init
+  # become: yes
+  # become_user: "{{ tendermint_user }}"
 
 - name: Place systemd unit file
   template:
@@ -44,4 +39,5 @@
     dest: /lib/systemd/system/tendermint.service
     owner: root
     group: root
+    force: true
   become: yes
